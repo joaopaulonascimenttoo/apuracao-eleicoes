@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Apura Brasil</string>
+    <string name="site_title">Apuração ao Vivo</string>
+    <string name="headline_main">Acompanhe a apuração</string>
+    <string name="headline_sub">Consulte os resultados nas fontes oficiais</string>
+    <string name="btn_official_results">Consultar resultados oficiais</string>
+    <string name="btn_open_webview">Visualizar no aplicativo</string>
+    <string name="btn_share_whatsapp">Compartilhar pelo WhatsApp</string>
+    <string name="section_sponsor">Oferecimento</string>
+    <string name="section_guide">Informações Úteis sobre a Votação</string>
+    <string name="disclaimer_footer">Aviso de Utilidade Pública: Este aplicativo é um portal independente e de utilidade pública para orientação ao eleitor. Não possui vínculo, representação ou afiliação oficial com o Tribunal Superior Eleitoral (TSE) ou com qualquer entidade governamental. Todos os dados oficiais de apuração são de responsabilidade exclusiva da Justiça Eleitoral brasileira.</string>
+</resources>

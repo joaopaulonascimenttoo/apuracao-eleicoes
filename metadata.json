@@ -1,0 +1,6 @@
+{
+  "name": "Apura Brasil",
+  "description": "Portal independente de utilidade pública para acompanhar a apuração e consultar resultados oficiais das eleições brasileiras.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

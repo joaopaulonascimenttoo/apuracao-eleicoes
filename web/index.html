@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apura Brasil — Apuração ao Vivo das Eleições</title>
+  <meta name="description" content="Portal independente de utilidade pública para acompanhar a apuração e consultar resultados oficiais das eleições brasileiras.">
+  <meta name="theme-color" content="#0a192f">
+  <style>
+    :root {
+      --navy-dark: #0a192f;
+      --navy-primary: #0f2042;
+      --navy-light: #1e3a8a;
+      --green-emerald: #059669;
+      --green-light: #10b981;
+      --green-dark: #047857;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #64748b;
+      --border-color: #e2e8f0;
+      --live-red: #dc2626;
+      --whatsapp-green: #25d366;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Live Bar */
+    .top-banner {
+      background-color: var(--navy-dark);
+      color: var(--white);
+      padding: 10px 20px;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #1e293b;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      font-size: 0.75rem;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--live-red);
+      border-radius: 50%;
+      animation: pulse 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Header */
+    header {
+      background-color: var(--navy-primary);
+      color: var(--white);
+      padding: 24px 20px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-content {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-title {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      color: var(--white);
+    }
+
+    .brand-title span {
+      color: var(--green-light);
+    }
+
+    .brand-subtitle {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 860px;
+      margin: 28px auto;
+      padding: 0 16px;
+    }
+
+    /* Card styling */
+    .card {
+      background-color: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    /* Hero Section */
+    .hero-card {
+      text-align: center;
+      padding: 36px 24px;
+      border-top: 4px solid var(--green-emerald);
+    }
+
+    .badge-official {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: var(--green-dark);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1.hero-title {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--navy-dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    p.hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .official-info-box {
+      background-color: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+      text-align: left;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .official-info-box strong {
+      color: var(--navy-dark);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* Main Action Button */
+    .btn-official-results {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background-color: var(--green-emerald);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 800;
+      padding: 18px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-official-results:hover {
+      background-color: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    .link-caption {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+    }
+
+    /* WhatsApp Share Button */
+    .whatsapp-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: var(--whatsapp-green);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px 20px;
+      border-radius: 12px;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #1eb956;
+    }
+
+    /* Sponsor Section (Oferecimento) */
+    .sponsor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .sponsor-title {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--navy-dark);
+    }
+
+    .ad-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      background-color: #f1f5f9;
+      border: 1px solid var(--border-color);
+      color: var(--text-subtle);
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sponsor-content {
+      background-color: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sponsor-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sponsor-logo-box {
+      width: 48px;
+      height: 48px;
+      background-color: var(--navy-primary);
+      color: var(--white);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .sponsor-brand-info h3 {
+      font-size: 1.05rem;
+      color: var(--text-dark);
+    }
+
+    .sponsor-brand-info span {
+      font-size: 0.8rem;
+      color: var(--green-emerald);
+      font-weight: 600;
+    }
+
+    .sponsor-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .btn-sponsor {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--navy-dark);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-sponsor:hover {
+      background-color: var(--navy-light);
+    }
+
+    /* Useful Guide Accordion */
+    .section-heading {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--navy-dark);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-heading::before {
+      content: "";
+      width: 4px;
+      height: 20px;
+      background-color: var(--green-emerald);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .section-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    details.guide-item {
+      background-color: var(--white);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      padding: 14px 18px;
+      transition: border-color 0.2s ease;
+    }
+
+    details.guide-item[open] {
+      border-color: #93c5fd;
+    }
+
+    summary.guide-summary {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--navy-dark);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    summary.guide-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary.guide-summary::after {
+      content: "▼";
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      transition: transform 0.2s;
+    }
+
+    details[open] summary.guide-summary::after {
+      transform: rotate(180deg);
+    }
+
+    .guide-body {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .guide-body ul {
+      margin-left: 20px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    .guide-body li {
+      margin-bottom: 6px;
+    }
+
+    .guide-note {
+      background-color: #f8fafc;
+      border-left: 3px solid var(--green-emerald);
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* Official Channels */
+    .channels-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 600px) {
+      .channels-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .channel-box {
+      background-color: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .channel-box h4 {
+      font-size: 0.95rem;
+      color: var(--navy-dark);
+      margin-bottom: 4px;
+    }
+
+    .channel-box p {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      margin-bottom: 12px;
+    }
+
+    .channel-box a {
+      color: var(--green-emerald);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--navy-dark);
+      color: var(--white);
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .disclaimer-badge {
+      display: inline-block;
+      background-color: #1e293b;
+      color: var(--green-light);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .disclaimer-text {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 14px;
+      text-align: justify;
+    }
+
+    .footer-divider {
+      border: 0;
+      height: 1px;
+      background-color: #334155;
+      margin: 24px 0 16px;
+    }
+
+    .footer-meta {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Live Beacon Bar -->
+  <div class="top-banner">
+    <div class="live-indicator">
+      <span class="pulse-dot"></span>
+      AO VIVO • COBERTURA ELEITORAL
+    </div>
+    <div id="brasiliaTime">Horário de Brasília: --:--</div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div>
+        <div class="brand-title">APURA <span>BRASIL</span></div>
+        <div class="brand-subtitle">Apuração ao Vivo & Guia Cívico do Eleitor</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main>
+
+    <!-- Hero Section -->
+    <section class="card hero-card">
+      <div class="badge-official">
+        ✓ Dados 100% Auditados & Oficiais
+      </div>
+      <h1 class="hero-title">Acompanhe a apuração</h1>
+      <p class="hero-subtitle">Consulte os resultados nas fontes oficiais</p>
+
+      <div class="official-info-box">
+        <strong>Fonte Oficial Direta: Justiça Eleitoral</strong>
+        O Tribunal Superior Eleitoral (TSE) disponibiliza a contagem dos votos em tempo real, boletins de urna por seção e estatísticas de comparecimento sem nenhum intermediário.
+      </div>
+
+      <!-- Main Highlighted Official Results Button -->
+      <a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer" class="btn-official-results">
+        Consultar resultados oficiais
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+      </a>
+      <div class="link-caption">Destino oficial: https://resultados.tse.jus.br/</div>
+    </section>
+
+    <!-- WhatsApp Share Card -->
+    <section class="card whatsapp-card">
+      <div>
+        <h2 style="font-size: 1.15rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 4px;">Compartilhar Utilidade Pública</h2>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Ajude familiares e amigos a consultarem os resultados oficiais e o guia de votação sem risco de cair em boatos.</p>
+      </div>
+      <a href="#" id="btnShareWhatsApp" class="btn-whatsapp">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.99.54 1.761.815 2.796.815 3.183 0 5.769-2.587 5.769-5.766 0-3.181-2.587-5.766-5.769-5.766zm6.398 5.766c0 3.528-2.87 6.398-6.398 6.398-1.077 0-2.073-.284-2.951-.795l-3.262.855.87-3.178c-.569-.933-.891-2.007-.891-3.28 0-3.528 2.87-6.398 6.398-6.398 3.528 0 6.398 2.87 6.398 6.398z"/></svg>
+        Compartilhar pelo WhatsApp
+      </a>
+    </section>
+
+    <!-- Sponsor Section: Oferecimento -->
+    <section class="card sponsor-card">
+      <div class="sponsor-header">
+        <span class="sponsor-title">OFERECIMENTO</span>
+        <span class="ad-badge">Espaço Publicitário</span>
+      </div>
+      <div class="sponsor-content">
+        <div class="sponsor-brand">
+          <div class="sponsor-logo-box">🏛️</div>
+          <div class="sponsor-brand-info">
+            <h3>Rede Brasil de Notícias & Serviços</h3>
+            <span>Parceiro Cultural & Informativo</span>
+          </div>
+        </div>
+        <p class="sponsor-text">Compromisso com a informação ágil, transparente e de utilidade pública para todos os cidadãos brasileiros.</p>
+        <a href="https://agenciabrasil.ebc.com.br/" target="_blank" rel="noopener noreferrer" class="btn-sponsor">
+          Conheça nossos canais
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Useful Voting Information Guide -->
+    <section class="card">
+      <div class="section-heading">Informações Úteis sobre a Votação</div>
+      <p class="section-desc">Confira os detalhes práticos para o dia da eleição com base nas normas oficiais da Justiça Eleitoral.</p>
+
+      <details class="guide-item" open>
+        <summary class="guide-summary">⏰ Horário de Votação (08h às 17h de Brasília)</summary>
+        <div class="guide-body">
+          <p>A votação segue o <strong>horário de Brasília</strong> de forma unificada em todo o país:</p>
+          <ul>
+            <li>Início às 08h e término às 17h (horário oficial de Brasília).</li>
+            <li>Estados em fusos diferentes (como Acre, Amazonas, Mato Grosso e Rondônia) votam em seus horários locais correspondentes.</li>
+            <li>Eleitores que chegarem à fila até as 17h recebem senha e têm garantia total de votar.</li>
+          </ul>
+          <div class="guide-note">Norma unificada pelo TSE para início simultâneo da apuração nacional.</div>
+        </div>
+      </details>
+
+      <details class="guide-item">
+        <summary class="guide-summary">🪪 Documentos Aceitos para Votar</summary>
+        <div class="guide-body">
+          <p>Para votar, é obrigatório apresentar um documento oficial com foto:</p>
+          <ul>
+            <li><strong>e-Título:</strong> Aplicativo oficial com foto cadastrada e biometria regular.</li>
+            <li><strong>RG:</strong> Carteira de Identidade (física ou digital oficial).</li>
+            <li><strong>CNH:</strong> Carteira Nacional de Habilitação (física ou digital).</li>
+            <li><strong>Passaporte brasileiro válido.</strong></li>
+            <li><strong>Carteira profissional</strong> emitida por órgãos de classe (OAB, CRM, CREA, etc.).</li>
+          </ul>
+          <div class="guide-note">O título em papel sem foto não é obrigatório e não serve como identificação isolada.</div>
+        </div>
+      </details>
+
+      <details class="guide-item">
+        <summary class="guide-summary">📝 Como Justificar o Voto</summary>
+        <div class="guide-body">
+          <p>Caso esteja fora do seu município eleitoral:</p>
+          <ul>
+            <li><strong>No dia da eleição:</strong> Utilize a função "Justificar" no app <strong>e-Título</strong> (das 08h às 17h, via GPS).</li>
+            <li><strong>Presencialmente no dia:</strong> Em qualquer seção eleitoral ou posto de justificativa.</li>
+            <li><strong>Após o pleito:</strong> Em até 60 dias após cada turno pelo portal <strong>justifica.tse.jus.br</strong> anexando atestado ou comprovação.</li>
+          </ul>
+          <div class="guide-note">A justificativa deve ser feita individualmente para cada turno ausente.</div>
+        </div>
+      </details>
+
+      <details class="guide-item">
+        <summary class="guide-summary">📍 Consulta de Local de Votação</summary>
+        <div class="guide-body">
+          <p>Confira com antecedência sua zona eleitoral e seção:</p>
+          <ul>
+            <li>Pelo aplicativo gratuito <strong>e-Título</strong>.</li>
+            <li>Pelo site oficial do TSE na seção "Autoatendimento Eleitoral".</li>
+            <li>Pelo assistente virtual oficial do TSE no WhatsApp.</li>
+          </ul>
+          <div class="guide-note"><a href="https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral#/" target="_blank" style="color: var(--green-emerald); font-weight: bold;">Clique aqui para consultar seu local no TSE</a></div>
+        </div>
+      </details>
+
+      <details class="guide-item">
+        <summary class="guide-summary">🗳️ Cabine de Votação: O que Pode e Não Pode</summary>
+        <div class="guide-body">
+          <ul>
+            <li><strong>PODE:</strong> Levar a "colinha" em papel com o número e nome dos candidatos.</li>
+            <li><strong>PODE:</strong> Manifestação individual, silenciosa e espontânea (broches, adesivos, camiseta).</li>
+            <li><strong>NÃO PODE:</strong> Entrar na cabine com aparelho celular, câmera ou filmadora. Devem ser desligados e entregues ao mesário.</li>
+            <li><strong>NÃO PODE:</strong> Aglomeração com vestimentas padronizadas (boca de urna).</li>
+          </ul>
+          <div class="guide-note">O sigilo do voto é protegido pela Constituição Federal.</div>
+        </div>
+      </details>
+
+      <details class="guide-item">
+        <summary class="guide-summary">🔍 Fato ou Boato & Combate à Desinformação</summary>
+        <div class="guide-body">
+          <p>Não caia em notícias falsas. Conheça as ferramentas oficiais:</p>
+          <ul>
+            <li>Página oficial <strong>Fato ou Boato</strong> do TSE esclarece alegações falsas.</li>
+            <li>Disque <strong>1491 (SOS Voto)</strong>: Canal gratuito para denúncias de fake news.</li>
+            <li>Fiscalização aberta: urnas são auditadas por partidos, Ministério Público, OAB e observadores.</li>
+          </ul>
+          <div class="guide-note"><a href="https://www.tse.jus.br/fato-ou-boato" target="_blank" style="color: var(--green-emerald); font-weight: bold;">Acessar portal 'Fato ou Boato' do TSE</a></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- Official Help Channels -->
+    <section class="card">
+      <div class="section-heading">Canais Oficiais de Atendimento</div>
+      <div class="channels-grid">
+        <div class="channel-box">
+          <h4>SOS Voto</h4>
+          <p>Denúncias de fake news eleitorais</p>
+          <a href="tel:1491">Disque 1491</a>
+        </div>
+        <div class="channel-box">
+          <h4>Disque Eleitor</h4>
+          <p>Central de dúvidas e quitação</p>
+          <a href="tel:148">Disque 148</a>
+        </div>
+        <div class="channel-box">
+          <h4>Autoatendimento</h4>
+          <p>Certidões e títulos online</p>
+          <a href="https://www.tse.jus.br/servicos-eleitorais/autoatendimento-eleitoral#/" target="_blank">Portal TSE</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer with Mandatory Disclaimer -->
+  <footer>
+    <div class="footer-content">
+      <div class="disclaimer-badge">AVISO DE UTILIDADE PÚBLICA • PROJETO INDEPENDENTE</div>
+      <p class="disclaimer-text">
+        Este site é um portal de utilidade pública independente e informativo. Não possui qualquer vínculo institucional, representação comercial, endosso ou ligação com o Tribunal Superior Eleitoral (TSE), Tribunais Regionais Eleitorais (TREs) ou qualquer órgão do governo.
+      </p>
+      <p class="disclaimer-text">
+        Todos os dados, boletins de urna, apurações e percentuais de votos são processados e divulgados exclusivamente pela Justiça Eleitoral brasileira no endereço oficial <strong>resultados.tse.jus.br</strong>. Não solicitamos nem coletamos quaisquer dados pessoais dos visitantes.
+      </p>
+      <hr class="footer-divider">
+      <div class="footer-meta">
+        <div>Apura Brasil — Em defesa da cidadania e da transparência democrática</div>
+        <div>Totalmente gratuito e de utilidade pública</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Live Brasília Clock
+    function updateBrasiliaTime() {
+      const now = new Date();
+      const options = {
+        timeZone: 'America/Sao_Paulo',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+      const formatter = new Intl.DateTimeFormat('pt-BR', options);
+      const timeStr = formatter.format(now);
+      const el = document.getElementById('brasiliaTime');
+      if (el) {
+        el.innerText = 'Brasília: ' + timeStr;
+      }
+    }
+    setInterval(updateBrasiliaTime, 1000);
+    updateBrasiliaTime();
+
+    // WhatsApp Share Button handler
+    document.getElementById('btnShareWhatsApp').addEventListener('click', function(e) {
+      e.preventDefault();
+      const text = encodeURIComponent(
+        "🗳️ *APURA BRASIL — Apuração ao Vivo das Eleições*\n\n" +
+        "Consulte os resultados oficiais diretamente na fonte da Justiça Eleitoral:\n" +
+        "👉 https://resultados.tse.jus.br/\n\n" +
+        "Confira também o guia completo de horários, documentos e justificativa!\n" +
+        "#EleicoesOficiais #ApuraBrasil"
+      );
+      window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
+    });
+  </script>
+</body>
+</html>
