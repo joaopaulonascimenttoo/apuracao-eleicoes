@@ -3,73 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apura Brasil — Apuração ao Vivo</title>
+    <title>🔴 AO VIVO | Apuração Brasil 2026 - 2º Turno</title>
+    
+    <!-- Meta Tags para ficar profissional quando compartilhado no WhatsApp -->
+    <meta name="description" content="Acompanhe a contagem regressiva, resultados oficiais em tempo real e o guia completo do 2º turno das Eleições 2026.">
+    <meta property="og:title" content="🔴 AO VIVO: Apuração 2º Turno 2026 & Guia do Eleitor">
+    <meta property="og:description" content="Toque para acompanhar a apuração oficial segundo a segundo e ver as regras de votação deste domingo.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://joaopaulonascimenttoo.github.io/apuracao-eleicoes/">
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400,500,600,700;900&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Inter', sans-serif; }</style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(245, 158, 11, 0.4); }
+            50% { border-color: rgba(245, 158, 11, 1); }
+        }
+        .animate-border { animation: pulse-border 2s infinite; }
+    </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between items-center p-0 m-0">
 
-    <!-- Container estilo celular / mobile first -->
-    <div class="w-full max-w-md bg-slate-900 min-h-screen shadow-2xl flex flex-col justify-between border-x border-slate-800">
+    <!-- Container Mobile-First -->
+    <div class="w-full max-w-md bg-slate-900 min-h-screen shadow-2xl flex flex-col justify-between border-x border-slate-800 relative">
         
-        <!-- Header -->
-        <header class="bg-slate-900 border-b border-slate-800 px-4 py-3 flex justify-between items-center sticky top-0 z-50">
+        <!-- Header Fixo -->
+        <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 px-4 py-3 flex justify-between items-center sticky top-0 z-40">
             <div class="flex items-center space-x-2">
-                <span class="w-2.5 h-2.5 bg-red-600 rounded-full animate-pulse"></span>
-                <span class="text-[10px] font-black uppercase text-red-500 tracking-wider">Ao Vivo • Cobertura Eleitoral</span>
+                <span class="w-2.5 h-2.5 bg-red-600 rounded-full animate-ping"></span>
+                <span class="text-[11px] font-black uppercase text-red-500 tracking-wider">Ao Vivo • 2º Turno 2026</span>
             </div>
-            <a href="#" class="text-slate-400 hover:text-white">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
-            </a>
+            <button onclick="compartilharSite()" class="text-slate-300 hover:text-emerald-400 flex items-center space-x-1 bg-slate-800 px-2.5 py-1 rounded-lg text-xs font-semibold transition cursor-pointer">
+                <span>Compartilhar</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+            </button>
         </header>
 
-        <!-- Conteúdo -->
-        <main class="p-5 space-y-6 flex-1">
-            <!-- Título -->
-            <div class="text-center space-y-1">
-                <h1 class="text-2xl font-black tracking-tight text-white">APURAÇÃO BRASIL</h1>
-                <p class="text-xs text-slate-400">Apuração ao Vivo & Guia Oficial do Eleitor</p>
+        <!-- Conteúdo Principal -->
+        <main class="p-4 space-y-5 flex-1">
+            
+            <!-- Título Principal -->
+            <div class="text-center space-y-1 pt-1">
+                <h1 class="text-2xl font-black tracking-tight text-white">APURAÇÃO <span class="text-emerald-400">BRASIL</span></h1>
+                <p class="text-xs text-slate-400">Painel de Acompanhamento & Utilidade Pública</p>
             </div>
 
-            <!-- Aviso Oficial -->
-            <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-2xl p-4 text-center space-y-1">
-                <div class="inline-block bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full">
-                    ✓ Dados 100% Auditados & Oficiais
+            <!-- Cronômetro Regressivo para as 17h de Domingo -->
+            <div class="bg-slate-950 border border-slate-800 rounded-2xl p-4 text-center space-y-2 shadow-inner">
+                <span id="status-titulo" class="text-[10px] font-bold uppercase tracking-widest text-amber-400 block">
+                    ⏳ Contagem para Abertura da Apuração (17h00)
+                </span>
+                <div id="countdown" class="grid grid-cols-4 gap-2 text-center pt-1">
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-2">
+                        <span id="cd-days" class="text-xl font-black text-white">00</span>
+                        <span class="block text-[9px] uppercase text-slate-400">Dias</span>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-2">
+                        <span id="cd-hours" class="text-xl font-black text-white">00</span>
+                        <span class="block text-[9px] uppercase text-slate-400">Horas</span>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-2">
+                        <span id="cd-mins" class="text-xl font-black text-emerald-400">00</span>
+                        <span class="block text-[9px] uppercase text-slate-400">Min</span>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-2">
+                        <span id="cd-secs" class="text-xl font-black text-emerald-400">00</span>
+                        <span class="block text-[9px] uppercase text-slate-400">Seg</span>
+                    </div>
                 </div>
-                <h2 class="text-base font-bold text-white pt-1">Acompanhe a apuração</h2>
-                <p class="text-xs text-slate-400">Consulte os resultados nas fontes oficiais</p>
             </div>
 
-            <!-- Botões de Ação -->
-            <div class="space-y-3">
-                <a href="https://resultados.tse.jus.br/" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold p-4 rounded-2xl flex items-center justify-center space-x-2 shadow-lg transition text-sm">
-                    <span>📊 Consultar Resultados Oficiais</span>
+            <!-- Card de Status e Acesso Oficial -->
+            <div class="bg-emerald-950/30 border border-emerald-500/30 rounded-2xl p-4 space-y-3">
+                <div class="flex justify-between items-center">
+                    <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full">
+                        ✓ Fonte Oficial TSE
+                    </span>
+                    <span class="text-[11px] text-slate-400">Urnas apuradas: <strong class="text-white">Aguardando 17h</strong></span>
+                </div>
+
+                <!-- Simulação Visual de Barras (Zeras até iniciar apuração) -->
+                <div class="space-y-2 pt-1">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span class="text-slate-200">Presidente • 2º Turno</span>
+                            <span class="text-emerald-400">0,00%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-emerald-500 h-full w-0"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span class="text-slate-200">Governador • 2º Turno</span>
+                            <span class="text-blue-400">0,00%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-blue-500 h-full w-0"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center space-x-2 shadow-lg transition text-sm mt-2">
+                    <span>📊 Abrir Painel Oficial do TSE</span>
                 </a>
             </div>
 
-            <!-- Botão WhatsApp -->
-            <div class="bg-slate-950/50 border border-slate-800 rounded-2xl p-4 space-y-3 text-center">
-                <p class="text-xs font-semibold text-slate-300">Compartilhar Utilidade Pública</p>
-                <a href="https://api.whatsapp.com/send?text=Acompanhe%20a%20apura%C3%A7%C3%A3o%20em%20tempo%20real%20aqui%3A%20https%3A%2F%2Fjoaopaulonascimenttoo.github.io%2Fapuracao-eleicoes%2F" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold p-3.5 rounded-xl flex items-center justify-center space-x-2 text-xs transition">
-                    <span>🟢 Compartilhar pelo WhatsApp</span>
+            <!-- Guia Rápido do Eleitor (Gera retenção o dia inteiro!) -->
+            <div class="bg-slate-950/60 border border-slate-800 rounded-2xl p-4 space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center space-x-1.5">
+                    <span>📌</span>
+                    <span>Guia Rápido deste Domingo (25/10)</span>
+                </h2>
+                <div class="grid grid-cols-2 gap-2 text-left">
+                    <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800/80">
+                        <p class="text-[10px] text-emerald-400 font-bold uppercase">Horário</p>
+                        <p class="text-xs font-semibold text-white mt-0.5">08h00 às 17h00</p>
+                        <p class="text-[10px] text-slate-400">Horário de Brasília</p>
+                    </div>
+                    <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800/80">
+                        <p class="text-[10px] text-emerald-400 font-bold uppercase">O que levar</p>
+                        <p class="text-xs font-semibold text-white mt-0.5">Doc. com Foto</p>
+                        <p class="text-[10px] text-slate-400">RG, CNH ou e-Título</p>
+                    </div>
+                    <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800/80">
+                        <p class="text-[10px] text-emerald-400 font-bold uppercase">Não votou 1ºT?</p>
+                        <p class="text-xs font-semibold text-white mt-0.5">Pode votar hoje!</p>
+                        <p class="text-[10px] text-slate-400">Os turnos são independentes</p>
+                    </div>
+                    <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800/80">
+                        <p class="text-[10px] text-emerald-400 font-bold uppercase">Justificativa</p>
+                        <p class="text-xs font-semibold text-white mt-0.5">Pelo App e-Título</p>
+                        <p class="text-[10px] text-slate-400">Até às 17h ou em 60 dias</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão Viral de WhatsApp -->
+            <div class="bg-slate-950/50 border border-slate-800 rounded-2xl p-4 space-y-2.5 text-center">
+                <p class="text-xs font-semibold text-slate-300">Envie o painel para o grupo da família e amigos:</p>
+                <a href="https://api.whatsapp.com/send?text=%F0%9F%94%B4%20*AO%20VIVO%3A%20Apura%C3%A7%C3%A3o%202%C2%BA%20Turno%202026%20%26%20Guia%20do%20Eleitor*%0A%0AAcompanhe%20a%20contagem%20regressiva%20e%20os%20resultados%20oficiais%20em%20tempo%20real%20aqui%3A%20https%3A%2F%2Fjoaopaulonascimenttoo.github.io%2Fapuracao-eleicoes%2F" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3.5 px-4 rounded-xl flex items-center justify-center space-x-2 text-xs shadow-lg transition">
+                    <span>🟢 Compartilhar no WhatsApp Agora</span>
                 </a>
             </div>
+
         </main>
 
-        <!-- ESPAÇO DE PATROCÍNIO (Onde entra o seu cliente de R$ 100) -->
-        <footer class="bg-slate-950 border-t border-slate-800 p-4 text-center space-y-1">
+        <!-- RODAPÉ DE PATROCÍNIO CLICÁVEL (COM SEU WHATSAPP 35 99868-5246) -->
+        <footer class="bg-slate-950 border-t border-slate-800 p-4 space-y-2">
             <div class="flex justify-between items-center text-[10px] text-slate-400 uppercase tracking-widest font-bold px-1">
                 <span>OFERECIMENTO</span>
-                <span class="text-amber-400">PATROCÍNIO MASTER</span>
+                <button onclick="abrirPopup()" class="text-amber-400 underline hover:text-amber-300 cursor-pointer">
+                    Ver Exemplo de Pop-up ↗
+                </button>
             </div>
-            <div class="bg-slate-900 border border-amber-500/30 rounded-xl p-3 text-center">
-                <p class="text-xs font-bold text-amber-200">Sua Marca Aqui no Domingo!</p>
-                <p class="text-[10px] text-slate-400 mt-0.5">Garanta o espaço de pop-up e banner para amanhã.</p>
-            </div>
+            
+            <!-- Card Clicável para Fechar Patrocínio -->
+            <a href="https://wa.me/5535998685246?text=Ol%C3%A1!%20Vi%20o%20site%20Apura%C3%A7%C3%A3o%20Brasil%20e%20quero%20garantir%20o%20espa%C3%A7o%20de%20Patroc%C3%ADnio%20Master%20para%20a%20minha%20empresa!" target="_blank" class="block bg-gradient-to-r from-amber-500/10 via-yellow-500/15 to-amber-500/10 border-2 border-amber-500/50 animate-border rounded-xl p-3.5 text-center hover:bg-amber-500/20 transition">
+                <span class="inline-block bg-amber-500 text-slate-950 text-[9px] font-black uppercase px-2 py-0.5 rounded mb-1">Cota Única Disponível</span>
+                <p class="text-sm font-extrabold text-amber-300">📢 Anuncie Sua Marca Aqui no Domingo!</p>
+                <p class="text-[11px] text-slate-300 mt-0.5">Toque aqui para colocar seu Delivery ou Empresa em destaque no Pop-up e Banner via WhatsApp.</p>
+            </a>
+            <p class="text-[10px] text-center text-slate-600 pt-1">Projeto independente de utilidade pública. Sem vínculo com o TSE.</p>
         </footer>
 
     </div>
 
+    <!-- POP-UP AUTOMÁTICO (COM SEU WHATSAPP 35 99868-5246) -->
+    <div id="popup-modal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border-2 border-amber-500 rounded-2xl max-w-sm w-full p-5 text-center relative shadow-2xl space-y-3">
+            <button onclick="fecharPopup()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-800 text-slate-300 hover:text-white font-bold flex items-center justify-center cursor-pointer">✕</button>
+            
+            <span class="inline-block text-[10px] uppercase font-black bg-amber-500 text-slate-950 px-3 py-1 rounded-full">
+                🔥 Destaque Exclusivo de Domingo
+            </span>
+            
+            <h3 class="text-lg font-black text-white pt-1">Sua Empresa Aqui na Hora da Apuração!</h3>
+            
+            <p class="text-xs text-slate-300 leading-relaxed">
+                Imagine a foto da sua <strong>Pizzaria, Hamburgueria, Adega ou Loja</strong> saltando na tela de centenas de moradores da região bem na hora do resultado!
+            </p>
+
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-left text-[11px] text-slate-300 space-y-1">
+                <p>✅ <strong>Pop-up automático</strong> na entrada do site</p>
+                <p>✅ <strong>Banner fixo</strong> no rodapé o domingo todo</p>
+                <p>✅ <strong>Botão direto</strong> para o WhatsApp do seu comércio</p>
+            </div>
+
+            <a href="https://wa.me/5535998685246?text=Ol%C3%A1!%20Vi%20o%20Pop-up%20no%20site%20de%20Apura%C3%A7%C3%A3o%20e%20quero%20reservar%20esse%20espa%C3%A7o%20para%20a%20minha%20empresa!" target="_blank" class="w-full block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs py-3.5 rounded-xl shadow-lg transition">
+                Quero Reservar Este Espaço no WhatsApp 🚀
+            </a>
+
+            <button onclick="fecharPopup()" class="text-[11px] text-slate-400 hover:text-slate-200 underline block w-full pt-1 cursor-pointer">
+                Fechar e continuar para a apuração
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Contagem Regressiva para 25/10/2026 às 17:00 (Horário de Brasília)
+        const targetDate = new Date("2026-10-25T17:00:00-03:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                document.getElementById("status-titulo").innerText = "🟢 URNAS FECHADAS • APURAÇÃO EM ANDAMENTO!";
+                document.getElementById("cd-days").innerText = "00";
+                document.getElementById("cd-hours").innerText = "00";
+                document.getElementById("cd-mins").innerText = "00";
+                document.getElementById("cd-secs").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("cd-days").innerText = String(days).padStart(2, '0');
+            document.getElementById("cd-hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("cd-mins").innerText = String(mins).padStart(2, '0');
+            document.getElementById("cd-secs").innerText = String(secs).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 2. Controle do Pop-up Comercial (abre após 4 segundos)
+        setTimeout(() => {
+            abrirPopup();
+        }, 4000);
+
+        function abrirPopup() {
+            document.getElementById('popup-modal').classList.remove('hidden');
+        }
+
+        function fecharPopup() {
+            document.getElementById('popup-modal').classList.add('hidden');
+        }
+
+        // 3. Botão de Compartilhar do Topo
+        function compartilharSite() {
+            const url = "https://joaopaulonascimenttoo.github.io/apuracao-eleicoes/";
+            if (navigator.share) {
+                navigator.share({
+                    title: '🔴 AO VIVO: Apuração Brasil 2026',
+                    text: 'Acompanhe a contagem regressiva, guia do 2º turno e resultados oficiais em tempo real:',
+                    url: url
+                });
+            } else {
+                window.open("https://api.whatsapp.com/send?text=Acompanhe%20a%20apura%C3%A7%C3%A3o%20em%20tempo%20real%20aqui%3A%20" + encodeURIComponent(url), "_blank");
+            }
+        }
+    </script>
 </body>
 </html>
